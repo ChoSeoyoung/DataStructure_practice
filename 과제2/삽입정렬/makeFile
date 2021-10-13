@@ -1,0 +1,23 @@
+#
+# makefile
+#
+CC=gcc -g
+LIBS= -L C:/sd/MinGW/lib/gcc-lib/mingw32/3.2.3/ -lstdc++
+
+all: insertionSort
+
+insertionSort: array.o gettime.o main.o
+	$(CC) -o insertionSort array.o gettime.o main.o
+
+array.o: array.c array.h
+	$(CC) -c array.c -o array.o  $(LIB)
+
+getTime.o: gettime.c gettime.h
+	$(CC) -c gettime.c -o gettime.o  $(LIB)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(LIB)
+
+clean:
+	del -f insertionSort.exe
+	del -f *.o
